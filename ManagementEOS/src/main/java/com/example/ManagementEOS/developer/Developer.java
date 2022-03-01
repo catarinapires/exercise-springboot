@@ -1,5 +1,6 @@
 package com.example.ManagementEOS.developer;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
@@ -18,7 +19,9 @@ public class Developer {
     @NonNull
     private String email;
     // tickets
-    @OneToMany
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "devAssigned")
+    @JsonBackReference // prevent loop
     private List<Ticket> tickets;
 
     @Transient

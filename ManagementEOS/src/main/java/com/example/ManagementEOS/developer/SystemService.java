@@ -30,7 +30,7 @@ public class SystemService {
         boolean exists = systemRepository.existsById(developerId);
         if (!exists){
             throw new IllegalStateException(
-                    "system with id " + developerId + " does not exists :(");
+                    "developer with id " + developerId + " does not exist :(");
 
         }
         systemRepository.deleteById(developerId);
@@ -40,7 +40,7 @@ public class SystemService {
     public void updateDeveloper(Integer developerId, String name, String jobDescription, String email) {
         Developer developer = systemRepository.findById(developerId)
                 .orElseThrow(() -> new IllegalStateException(
-                        "developer with id "+ developerId+ " does not exists :("));
+                        "developer with id "+ developerId+ " does not exist :("));
 
         if (name != null && name.length()>0 &&
                 !Objects.equals(developer.getName(), name)){

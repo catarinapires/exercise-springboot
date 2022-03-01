@@ -24,4 +24,22 @@ public class TicketController {
     public void registerNewTicket(@RequestBody Ticket tick) {
         ticketService.addNewTicket(tick);
     }
+
+    @DeleteMapping(path = "{ticketId}")
+    public void deleteTicket(
+            @PathVariable("ticketId") Integer ticketId){
+        ticketService.deleteTicket(ticketId);
+    }
+
+    @PutMapping(path = "{ticketId}")
+    public void updateTicket(
+            @PathVariable("ticketId") Integer ticketId,
+            @RequestParam(required = false) String description,
+            @RequestParam(required = false) Developer devAssigned,
+            @RequestParam(required = false) boolean finished
+    ) {
+
+        ticketService.updateTicket(ticketId,description,devAssigned,finished);
+    }
+
 }

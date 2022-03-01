@@ -1,5 +1,6 @@
 package com.example.ManagementEOS.developer;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
@@ -13,7 +14,9 @@ public class Ticket {
     private int id;
     @NonNull
     private String description;
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+//    @JsonBackReference
+    @JoinColumn
     private Developer devAssigned;
     private boolean finished;
 

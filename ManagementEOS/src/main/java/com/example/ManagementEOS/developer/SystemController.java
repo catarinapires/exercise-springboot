@@ -39,7 +39,6 @@ public class SystemController {
             @RequestParam(required = false) String jobDescription,
             @RequestParam(required = false) String email
             ) {
-
         systemService.updateDeveloper(developerId,name,jobDescription,email);
     }
 
